@@ -18,6 +18,9 @@ function find() {
       }
     ]
    */
+  return db('users')
+    .join('roles',  'users.role_id', 'roles.role.id')
+    .select('user_id', 'username', 'role_name')
 }
 
 function findBy(filter) {
@@ -34,6 +37,10 @@ function findBy(filter) {
       }
     ]
    */
+  return db('users')
+    .join('roles',  'users.role_id', 'roles.role.id')
+    .select('user_id', 'username', 'role_name')
+    .where('users.user_id', user_id).first()
 }
 
 function findById(user_id) {
